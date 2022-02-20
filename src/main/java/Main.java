@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * Zadanie NBP API:
  *
@@ -28,7 +30,18 @@ public class Main {
         Utilities utilities = new Utilities();
         System.out.println();
 
-        System.out.println("Get the start date: ");
-        System.out.println(scannerWork.getLocalDate().format(utilities.getDateTimeFormatter()));
+        System.out.println("Enter the period:");
+        System.out.println("Get the start date of the period: ");
+//        LocalDate localDateStart = scannerWork.getLocalDateStart();
+//        System.out.println(localDateStart.format(utilities.getDateTimeFormatter()));
+
+        System.out.println("Get the end date of the period:");
+//        LocalDate localDateEnd = scannerWork.getLocalDateEnd(localDateStart);
+//        System.out.println(localDateEnd.format(utilities.getDateTimeFormatter()));
+
+        System.out.println();
+        System.out.println("List of available currencies: ");
+        CurrencyCode currencyCode = scannerWork.getCurrencyCode();
+        System.out.println(currencyCode);
     }
 }
