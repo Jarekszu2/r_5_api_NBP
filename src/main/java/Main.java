@@ -25,23 +25,41 @@ import java.time.LocalDate;
  **/
 
 public class Main {
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_YELLOW = "\u001B[33m";
     public static void main(String[] args) {
         ScannerWork scannerWork = new ScannerWork();
         Utilities utilities = new Utilities();
         System.out.println();
 
-        System.out.println("Enter the period:");
-        System.out.println("Get the start date of the period: ");
+        boolean flag = false;
+        char sign;
+        do {
+            System.out.println();
+            System.out.println("a) Currencies." +
+                    "\nq) Quit.");
+            sign = scannerWork.getCharAQ();
+            switch (sign) {
+                case 'a' :
+                    System.out.println("Aplication to work with currencies.");
+                    System.out.println("Enter the period:");
+                    System.out.println("Get the start date of the period: ");
 //        LocalDate localDateStart = scannerWork.getLocalDateStart();
 //        System.out.println(localDateStart.format(utilities.getDateTimeFormatter()));
 
-        System.out.println("Get the end date of the period:");
+                    System.out.println("Get the end date of the period:");
 //        LocalDate localDateEnd = scannerWork.getLocalDateEnd(localDateStart);
 //        System.out.println(localDateEnd.format(utilities.getDateTimeFormatter()));
 
-        System.out.println();
-        System.out.println("List of available currencies: ");
-        CurrencyCode currencyCode = scannerWork.getCurrencyCode();
-        System.out.println(currencyCode);
+                    System.out.println();
+                    System.out.println("List of available currencies: ");
+                    CurrencyCode currencyCode = scannerWork.getCurrencyCode();
+                    System.out.println(currencyCode);
+                    break;
+                case 'q' :
+                    flag = true;
+                    break;
+            }
+        } while (!flag);
     }
 }

@@ -4,6 +4,8 @@ import java.util.*;
 class ScannerWork {
     private Scanner scanner = new Scanner(System.in);
     private Utilities utilities = new Utilities();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_YELLOW = "\u001B[33m";
 
     private LocalDate getLocalDateStart() {
         boolean flag = false;
@@ -67,5 +69,20 @@ class ScannerWork {
         } while (!flag);
 
         return characterCurrencyCodeMap.get(choosenChar);
+    }
+
+    char getCharAQ() {
+        boolean flag = false;
+        char sign;
+        do {
+            System.out.println(ANSI_YELLOW + "Choose: a, q = ?" + ANSI_RESET);
+            sign = scanner.next().toLowerCase().charAt(0);
+            if (sign == 'a' || sign == 'q') {
+                flag = true;
+            } else {
+                System.err.println("Bad choice.");
+            }
+        } while (!flag);
+        return sign;
     }
 }
