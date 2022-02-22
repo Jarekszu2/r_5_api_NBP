@@ -27,6 +27,8 @@ import java.time.LocalDate;
 public class Main {
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_YELLOW = "\u001B[33m";
+    private final static String BASE_NBP_API_URL = "http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/{startDate}/{endDate}/?format={dataFormat}";
+
     public static void main(String[] args) {
         ScannerWork scannerWork = new ScannerWork();
         Utilities utilities = new Utilities();
@@ -42,6 +44,16 @@ public class Main {
             switch (sign) {
                 case 'a' :
                     System.out.println("Aplication to work with currencies.");
+
+                    System.out.println();
+                    System.out.println("Choose:" +
+                            "\n a) Tabela A kursów średnich walut obcych" +
+                            "\n b) Tabela B kursów średnich walut obcych" +
+                            "\n c) Tabela C kursów kupna i sprzedaży walut obcych");
+                    char charTable = scannerWork.getCharABC();
+                    scannerWork.description1(charTable);
+
+                    System.out.println();
                     System.out.println("Enter the period:");
                     System.out.println("Get the start date of the period: ");
 //        LocalDate localDateStart = scannerWork.getLocalDateStart();

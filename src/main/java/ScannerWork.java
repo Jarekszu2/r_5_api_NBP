@@ -54,12 +54,13 @@ class ScannerWork {
             characterList.add((char) intForList);
             intForList++;
         }
+        System.out.print(ANSI_YELLOW);
         characterList.forEach(character -> System.out.print(character + "), "));
 
         boolean flag = false;
         char choosenChar;
         do {
-            System.out.println("Choose a currency: ");
+            System.out.println(ANSI_YELLOW + "Choose a currency: " + ANSI_RESET);
             choosenChar = scanner.next().toLowerCase().charAt(0);
             if (characterList.contains(choosenChar)) {
                 flag = true;
@@ -84,5 +85,31 @@ class ScannerWork {
             }
         } while (!flag);
         return sign;
+    }
+
+    char getCharABC() {
+        boolean flag = false;
+        char sign;
+        do {
+            System.out.println(ANSI_YELLOW + "Choose: a, b, c = ?" + ANSI_RESET);
+            sign = scanner.next().toLowerCase().charAt(0);
+            if (sign == 'a' || sign == 'b' || sign == 'c') {
+                flag = true;
+            } else {
+                System.err.println("Bad choice.");
+            }
+        } while (!flag);
+        return sign;
+    }
+
+    void description1(char charTable) {
+        System.out.println("You have choosen:");
+        if (charTable == 'a') {
+            System.out.println("a) Tabela A kursów średnich walut obcych");
+        } else if (charTable == 'b') {
+            System.out.println("b) Tabela B kursów średnich walut obcych");
+        } else if (charTable == 'c') {
+            System.out.println("c) Tabela C kursów kupna i sprzedaży walut obcych");
+        }
     }
 }
