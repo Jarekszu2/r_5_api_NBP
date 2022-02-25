@@ -7,14 +7,14 @@ class ScannerWork {
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_YELLOW = "\u001B[33m";
 
-    private LocalDate getLocalDateStart() {
+    LocalDate getLocalDateStart() {
         boolean flag = false;
         LocalDate localDate = null;
         do {
-            System.out.println("Enter a date in format: dd-MM-yyyy: ");
+            System.out.println(ANSI_YELLOW + "Enter a date in format: dd-MM-yyyy: " + ANSI_RESET);
             String stringDate = scanner.next();
             try {
-                localDate = LocalDate.parse(stringDate, utilities.getDateTimeFormatter());
+                localDate = LocalDate.parse(stringDate, utilities.getDateTimeFormatter_dd_MM_yyyy());
                 flag = true;
             } catch (Exception e) {
                 System.err.println("Bad format of the date!");
@@ -29,7 +29,7 @@ class ScannerWork {
         do {
             localDateEnd = getLocalDateStart();
             if (localDateEnd.isBefore(localDateStart)) {
-                System.err.println("The end date of the period is befoere the start date of the period!");
+                System.err.println("The end date of the period is before the start date of the period!");
             } else {
                 flag = true;
             }
@@ -47,7 +47,7 @@ class ScannerWork {
         }
         characterCurrencyCodeMap.forEach((k, v) -> System.out.println(k + ") " + v));
 
-        System.out.println();
+//        System.out.println();
         int intForList = 97;
         List<Character> characterList = new ArrayList<>();
         for (int i = 0; i < CurrencyCode.values().length; i++) {
@@ -94,6 +94,27 @@ class ScannerWork {
             System.out.println(ANSI_YELLOW + "Choose: a, b, c = ?" + ANSI_RESET);
             sign = scanner.next().toLowerCase().charAt(0);
             if (sign == 'a' || sign == 'b' || sign == 'c') {
+                flag = true;
+            } else {
+                System.err.println("Bad choice.");
+            }
+        } while (!flag);
+        return sign;
+    }
+
+    char getChars(Character...chars) {
+        boolean flag = false;
+        List<Character> characterList = Arrays.asList(chars);
+        char sign;
+        do {
+            System.out.print(ANSI_YELLOW + "Choose: ");
+            for (Character ch : chars) {
+                System.out.print(ch + "), ");
+            }
+            System.out.print("= ?");
+            System.out.println(ANSI_RESET);
+            sign = scanner.next().toLowerCase().charAt(0);
+            if (characterList.contains(sign)) {
                 flag = true;
             } else {
                 System.err.println("Bad choice.");
