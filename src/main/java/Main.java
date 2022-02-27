@@ -169,7 +169,66 @@ public class Main {
                                 }
                             } while (!flagIfB);
                         } else if (charTable == 'c') {
-                            System.out.println("Project C.");
+                            boolean flagIfC = false;
+                            do {
+                                System.out.println();
+                                System.out.println("Tabela C kursów kupna i sprzedaży walut obcych. Choose:" +
+                                        "\n a) ask min" +
+                                        "\n b) ask max" +
+                                        "\n c) ask average" +
+                                        "\n d) bid min" +
+                                        "\n e) bid max" +
+                                        "\n f) bid average" +
+                                        "\n q) quit");
+                                char signIfC = scannerWork.getChars('a', 'b', 'c', 'd', 'e', 'f', 'q');
+                                switch (signIfC) {
+                                    case 'a' :
+                                        System.out.println("Calculate minimum ask.");
+                                        OptionalDouble optIfCAsk_Min = utilities.getMinAsk(rates);
+                                        if (optIfCAsk_Min.isPresent()) {
+                                            System.out.println("Minimum mid = " + optIfCAsk_Min.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'b' :
+                                        System.out.println("Calculate maximum ask.");
+                                        OptionalDouble optIfCAsk_Max = utilities.getMaxAsk(rates);
+                                        if (optIfCAsk_Max.isPresent()) {
+                                            System.out.println("Maximum mid = " + optIfCAsk_Max.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'c' :
+                                        System.out.println("Calculate average ask.");
+                                        OptionalDouble optIfCAsk_Average = utilities.getAverageAsk(rates);
+                                        if (optIfCAsk_Average.isPresent()) {
+                                            System.out.println("Average mid = " + optIfCAsk_Average.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'd' :
+                                        System.out.println("Calculate minimum bid.");
+                                        OptionalDouble optIfCBid_Min = utilities.getMinBid(rates);
+                                        if (optIfCBid_Min.isPresent()) {
+                                            System.out.println("Minimum mid = " + optIfCBid_Min.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'e' :
+                                        System.out.println("Calculate maximum bid.");
+                                        OptionalDouble optIfCBid_Max = utilities.getMaxBid(rates);
+                                        if (optIfCBid_Max.isPresent()) {
+                                            System.out.println("Maximum mid = " + optIfCBid_Max.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'f' :
+                                        System.out.println("Calculate average bid.");
+                                        OptionalDouble optIfCBid_Average = utilities.getAverageBid(rates);
+                                        if (optIfCBid_Average.isPresent()) {
+                                            System.out.println("Average mid = " + optIfCBid_Average.getAsDouble() + ".");
+                                        }
+                                        break;
+                                    case 'q' :
+                                        flagIfC = true;
+                                        break;
+                                }
+                            } while (!flagIfC);
                         }
                     }
                     break;

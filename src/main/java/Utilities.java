@@ -71,4 +71,33 @@ class Utilities {
         return rates.stream()
                 .mapToDouble(Rate::getMid).average();
     }
+
+    OptionalDouble getMinAsk(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getAsk).min();
+    }
+
+    OptionalDouble getMaxAsk(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getAsk).max();
+    }
+
+    OptionalDouble getAverageAsk(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getAsk).average();
+    }
+    OptionalDouble getMinBid(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getBid).min();
+    }
+
+    OptionalDouble getMaxBid(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getBid).max();
+    }
+
+    OptionalDouble getAverageBid(List<Rate> rates) {
+        return rates.stream()
+                .mapToDouble(Rate::getBid).average();
+    }
 }
